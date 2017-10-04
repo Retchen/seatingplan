@@ -37,20 +37,27 @@ public class SeatingPlanApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        LOG.info("Construction table TYPE");
+        LOG.info("Construction table BATIMENT");
         List<Batiment> batiments = new ArrayList<>();
-        List<Type> types = new ArrayList<>();
         batiments.add(new Batiment("Batiment A"));
         batiments.add(new Batiment("Batiment B"));
-        List<Materiel> materiels = new ArrayList<>();
+        batimentRepository.save(batiments);
+        LOG.info("FIN == Construction table BATIMENT");
+
+
+        LOG.info("Construction table TYPE");
+        List<Type> types = new ArrayList<>();
         types.add(new Type("Bureau"));
         types.add(new Type("Chaise"));
-        materiels.add(new Materiel("Materiel 1",3));
-        materiels.add(new Materiel("Materiel 2", 3));
-        batimentRepository.save(batiments);
         typeRepository.save(types);
-        materielRepository.save(materiels);
         LOG.info("FIN == Construction table TYPE");
+
+        LOG.info("Construction table MATERIEL");
+        List<Materiel> materiels = new ArrayList<>();
+        materiels.add(new Materiel("Materiel 1"));
+        materiels.add(new Materiel("Materiel 2"));
+        materielRepository.save(materiels);
+        LOG.info("FIN == Construction table MATERIEL");
 
 
 
